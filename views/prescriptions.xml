@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="rx_prescription_form" model="ir.ui.view">
+        <field name="name">rx.prescription.form</field>
+        <field name="model">rx.prescription</field>
+        <field name="arch" type="xml">
+            <form string="Prescriptions">
+                <sheet>
+                    <div class="oe-title">
+                        <h1>
+                            <field name="ref" readonly="1" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="prescriber_id"></field>
+                            <field name="client_id"></field>
+                            <field name="formaFarmaceutica"></field>
+                            <field name="quantidadeFormula"></field>
+                        </group>
+                        <group>
+                            <field name="patient_id"></field>
+                            <field name="issuedDate"></field>
+                            <field name="tipoUso"></field>
+                            <field name="unidadeMedida_id"></field>
+                        </group>
+                        <field name="observation" class="oe-bordered-editor"
+                            placeholder="Observations for the prescription"></field>
+                    </group>
+                    <group>
+                        <field name='prescription_line_ids'>
+                            <tree>
+                                <field name='product_id' />
+                                <field name='dose' />
+                                <field name='unidadeMedida_id' />
+                            </tree>
+                            <form>
+                                <field name='product_id' />
+                                <group>
+                                    <field name='dose' />
+                                </group>
+                                <group>
+                                    <field name='unidadeMedida_id' />
+                                </group>
+                            </form>
+                        </field>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user" />
+                    <field name="message_ids" />
+                </div>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="rx_prescription_tree" model="ir.ui.view">
+        <field name="name">rx.prescription.tree</field>
+        <field name="model">rx.prescription</field>
+        <field name="arch" type="xml">
+            <tree string="Prescriptions">
+                <field name="ref"></field>
+                <field name="prescriber_id"></field>
+                <field name="client_id"></field>
+                <field name="patient_id"></field>
+                <field name="issuedDate"></field>
+                <field name="quantidadeFormula"></field>
+                <field name="unidadeMedida_id"></field>
+                <field name="formaFarmaceutica"></field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_prescription" model="ir.actions.act_window">
+        <field name="name">Prescriptions</field>
+        <field name="res_model">rx.prescription</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add new prescription
+            </p>
+        </field>
+    </record>
+
+    <menuitem name="Prescriptions" id="rx_prescriptions_root" sequence="2" />
+    <menuitem name="Prescription" id="rx_menu_prescription" parent="rx_prescriptions_root"
+        sequence="100"
+        action="action_prescription" />
+
+
+</odoo>
