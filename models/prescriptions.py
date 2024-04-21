@@ -3,13 +3,14 @@ from odoo import models, fields, api, _
 TIPO_USO = [
     ("i", "Interno"),
     ("e", "Externo"),
-    ("t", "Topico"),
+    ("t", "Tópico"),
     ("a", "Intraretal"),
     ("o", "Ocular"),
     ("n", "Nasal"),
 ]
 
 FORMA_FARMACEUTICA = [
+    ("inj", "Injetável"),
     ("cap", "Cápsula"),
     ("com", "Comprimido"),
     ("env", "Envelope"),
@@ -28,7 +29,7 @@ FORMA_FARMACEUTICA = [
     ("sol", "Solução"),
     ("hom", "Homeopatia"),
     ("flo", "Floral"),
-    ("inj", "Injetável"),
+    ("ovu", "Óvulo"),
 ]
 
 
@@ -42,9 +43,9 @@ class RxPrescription(models.Model):
         string="Status",
         selection=(
             [
-                ("sol", "Solicitado"),
-                ("val", "Validado"),
-                ("rep", "Reprovado"),
+                ("solicitado", "Solicitado"),
+                ("validado", "Validado"),
+                ("recusado", "Recusado"),
             ]
         ),
         tracking=True,
@@ -59,10 +60,9 @@ class RxPrescription(models.Model):
     prescriber_id = fields.Many2one(
         string="Prescriber", comodel_name="res.partner", required=True
     )
-    quantidadeFormula = fields.Integer(string="Quantity Expected")
-    observation = fields.Html(
-        string="Observations", help="Observations for this prescription"
-    )
+    quantidadeFormula = fields.Integer(string="Quantity", required=True, default=0)
+    posology = fields.Text(string="Posology")
+
     unidadeMedida_id = fields.Many2one(string="Units", comodel_name="uom.uom")
 
     tipoUso = fields.Selection(
@@ -79,6 +79,10 @@ class RxPrescription(models.Model):
         "prescription_id",
         string="Prescription Components",
     )
+
+    cid_code = fields.Char(string="CID 10")
+
+    attachment = fields.Binary(attachment=True, string="Anexo")
 
     @api.onchange("formaFarmaceutica")
     def _onchange_formaFarmaceutica(self):
@@ -97,9 +101,13 @@ class RxPrescriptionLines(models.Model):
     _name = "rx.prescription.lines"
     _description = "Prescription Components"
 
-    product_id = fields.Many2one(string="Product", comodel_name="product.product")
-    dose = fields.Float(string="Dose", digits=(10, 2))
-    unidadeMedida_id = fields.Many2one(string="Unit", comodel_name="uom.uom")
+    product_id = fields.Many2one(
+        string="Product", comodel_name="product.product", required=True
+    )
+    dose = fields.Float(string="Dose", digits=(10, 2), required=True)
+    unidadeMedida_id = fields.Many2one(
+        string="Unit", comodel_name="uom.uom", required=True
+    )
     prescription_id = fields.Many2one(
         string="Prescription", comodel_name="rx.prescription"
     )

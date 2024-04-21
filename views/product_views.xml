@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_view_inherit" model="ir.ui.view">
+        <field name="name">product.template.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Pharma" name="pharma">
+                    <group>
+                        <group string="Chemical Properties">
+                            <field name="dcb" />
+                            <field name="cas" />
+                            <field name="classificacao_regulatoria" />
+                        </group>
+                        <group string="Pharmaceutical Properties">
+                            <field name="classe_terapeutica" />
+                            <field name="lista_344" />
+                            <field name="fator_diluicao_numerador" />
+                            <field name="fator_diluicao_denominador" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string = "Farmacologia"></page>
+                    </notebook>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

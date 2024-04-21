@@ -4,11 +4,12 @@
     'author':'Lucas Chagas Lima do Carmo',
     'category': 'Technical',
     'summary': 'Prescription Inclusion',
-    'description': """Module for including medical prescriptions""",
+    'description': """Module for including medical prescriptions, active pharmaceutical ingredients""",
     'depends': ['mail','product','uom','stock'],
     'sequence': 0,
     'data': [
         'views/prescriptions.xml',
+        'views/product_views.xml',
         'data/sequence.xml'
     ],
     'installable': True,

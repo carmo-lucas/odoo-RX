@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128"
+   height="128"
+   viewBox="0 0 33.866667 33.866667"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1" /><g
+     id="layer1"><rect
+       style="fill:#ffffff;stroke-width:0.264583"
+       id="rect1"
+       width="33.866669"
+       height="33.866669"
+       x="0"
+       y="0" /><path
+       style="fill:#ffffff;stroke:none;stroke-width:0.264583"
+       d="m 10.570972,8.0390028 0.0633,3.4814582 6.299063,-0.126599 c 0,0 1.245665,-0.443094 1.245665,-1.7723783 0,-1.3292839 -1.245665,-1.8356779 -1.245665,-1.8356779 z"
+       id="path5" /><path
+       style="opacity:1;mix-blend-mode:normal;fill:#985184;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       d="m 16.256271,28.575 3.353472,0 7.227969,-10.322608 A 0.54040219,0.54040219 62.500001 0 0 26.39504,17.402028 H 23.041568 L 15.813599,27.724636 A 0.54040219,0.54040219 62.500001 0 0 16.256271,28.575 Z"
+       id="path11" /><path
+       style="font-weight:bold;font-size:32.6097px;font-family:Roboto;-inkscape-font-specification:'Roboto Bold';fill:#1ad3bb;fill-opacity:1;stroke-width:0.614066"
+       d="m 15.808515,20.051635 h -3.821921 v 6.784837 a 1.7385255,1.7385255 135 0 1 -1.738525,1.738525 H 7.7183717 V 5.291667 h 8.1221253 c 2.750503,0 4.872016,0.6129997 6.364537,1.8389992 1.492521,1.2259996 2.238781,2.9583898 2.238781,5.1971718 0,1.588469 -0.346478,2.915747 -1.039434,3.981833 -0.682295,1.055426 -1.72173,1.897635 -3.118303,2.526626 l 6.095592,9.514822 v 0.223878 H 21.232472 Z M 11.986594,16.16575 h 3.869895 c 1.204677,0 2.137503,-0.303835 2.798477,-0.911504 0.660973,-0.618331 0.99146,-1.46587 0.99146,-2.542617 0,-1.098069 -0.314496,-1.961599 -0.943487,-2.59059 -0.61833,-0.6289911 -1.572477,-0.9434866 -2.862442,-0.9434866 h -3.853903 z"
+       id="text11"
+       aria-label="R" /><path
+       id="path13"
+       style="opacity:1;mix-blend-mode:darken;fill:#005e7a;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       d="m 21.122742,20.141923 -2.753837,3.933094 2.090828,3.286104 2.761589,-3.943429 z" /></g></svg>
