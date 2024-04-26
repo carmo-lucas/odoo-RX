@@ -21,20 +21,16 @@ class ProductTemplateInherit(models.Model):
             ("c5", "C5 - Anabolizantes"),
         ],
     )
-    classificacao_regulatoria = fields.Selection(
+
+    classificacao_regulatoria_ids = fields.Many2many(
+        comodel_name="rx.regulatory.classification",
         string="Entidades Reguladoras",
         help="Ao selecionar as entidades será possível gerar relatórios no formato especificado pelas respectivas plataformas das entidades.",
-        selection=[
-            ("pf", "Polícia Federal (MAPAS)"),
-            ("pc", "Polícia Civíl"),
-            ("ex", "Exército"),
-            ("ms", "SNGPC"),
-        ],
     )
 
     dcb = fields.Char(string="Denominação Comum Brasileira", size=20, trim=False)
     cas = fields.Char(string="CAS", size=12, trim=False)
-    classe_terapeutica = fields.Selection(
-        string="Classe Terapêutica",
+    classe_SNGPC = fields.Selection(
+        string="Classe SNGPC",
         selection=[("1", "Controle Especial"), ("2", "Antimicrobiano")],
     )

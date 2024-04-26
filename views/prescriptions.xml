@@ -22,10 +22,10 @@
                             <field name="issuedDate" />
                         </group>
                         <group string="Informações Medicamento">
-                            <field name="formaFarmaceutica" />
+                            <field name="pharmaceutical_form_id" />
                             <field name="tipoUso" />
-                            <field name="quantidadeFormula" invisible="formaFarmaceutica == 'inj'" />
-                            <field name="unidadeMedida_id" invisible="formaFarmaceutica == 'inj'" />
+                            <field name="quantidadeFormula" invisible="pharmaceutical_form_id == 'inj'" />
+                            <field name="unidadeMedida_id" invisible="pharmaceutical_form_id == 'inj'" />
                         </group>
                         <group string="Informações Adicionais">
                             <field name="posology" />

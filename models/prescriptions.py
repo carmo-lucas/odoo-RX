@@ -9,30 +9,6 @@ TIPO_USO = [
     ("n", "Nasal"),
 ]
 
-FORMA_FARMACEUTICA = [
-    ("inj", "Injetável"),
-    ("cap", "Cápsula"),
-    ("com", "Comprimido"),
-    ("env", "Envelope"),
-    ("pas", "Pastilha"),
-    ("bis", "Biscoito"),
-    ("pat", "Patch"),
-    ("fil", "Filme"),
-    ("cre", "Creme"),
-    ("loc", "Loção"),
-    ("xpu", "Xampu"),
-    ("gel", "Gel"),
-    ("pmd", "Pomada"),
-    ("pst", "Pasta"),
-    ("xap", "Xarope"),
-    ("soo", "Solução Oral"),
-    ("sol", "Solução"),
-    ("hom", "Homeopatia"),
-    ("flo", "Floral"),
-    ("ovu", "Óvulo"),
-]
-
-
 class RxPrescription(models.Model):
     _name = "rx.prescription"
     _description = "Professional Prescription"
@@ -70,8 +46,8 @@ class RxPrescription(models.Model):
         required=True,
         selection=TIPO_USO,
     )
-    formaFarmaceutica = fields.Selection(
-        string="Farmaceutical Form", required=True, selection=FORMA_FARMACEUTICA
+    pharmaceutical_form_id = fields.Many2one(
+        comodel_name="rx.pharmaceutical.form", required=True
     )
 
     prescription_line_ids = fields.One2many(
@@ -83,11 +59,6 @@ class RxPrescription(models.Model):
     cid_code = fields.Char(string="CID 10")
 
     attachment = fields.Binary(attachment=True, string="Anexo")
-
-    @api.onchange("formaFarmaceutica")
-    def _onchange_formaFarmaceutica(self):
-        if self.formaFarmaceutica == "cap":
-            self.tipoUso = "i"
 
     # Generates reference code for the prescription
     @api.model_create_multi
