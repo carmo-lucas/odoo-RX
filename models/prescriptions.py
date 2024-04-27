@@ -9,24 +9,27 @@ TIPO_USO = [
     ("n", "Nasal"),
 ]
 
+PRESCRIPTION_STATUS = [
+    ("cotacao", "Cotação"),
+    ("solicitado", "Solicitado"),
+    ("validado", "Validado"),
+    ("recusado", "Recusado"),
+    ("cancelado", "Cancelado"),
+]
+
+
 class RxPrescription(models.Model):
     _name = "rx.prescription"
     _description = "Professional Prescription"
     _inherit = ["mail.thread", "mail.activity.mixin"]
+    _order = "create_date desc, id desc"
 
     ref = fields.Char(string="Reference", default=lambda self: _("New"))
     status = fields.Selection(
-        string="Status",
-        selection=(
-            [
-                ("solicitado", "Solicitado"),
-                ("validado", "Validado"),
-                ("recusado", "Recusado"),
-            ]
-        ),
-        tracking=True,
+        string="Status", selection=PRESCRIPTION_STATUS, tracking=True
     )
     issuedDate = fields.Date(string="Issued Date", required=True, tracking=True)
+    is_formula = fields.Boolean(string="Is it a Formula?")
     patient_id = fields.Many2one(
         string="Patient", comodel_name="res.partner", required=True
     )
@@ -55,10 +58,9 @@ class RxPrescription(models.Model):
         "prescription_id",
         string="Prescription Components",
     )
+    cid_code = fields.Char(string="CID 10", size = 20, tracking=True)
 
-    cid_code = fields.Char(string="CID 10")
-
-    attachment = fields.Binary(attachment=True, string="Anexo")
+    attachment = fields.Binary(attachment=True, string="Attachment")
 
     # Generates reference code for the prescription
     @api.model_create_multi
@@ -66,6 +68,7 @@ class RxPrescription(models.Model):
         for vals in vals_list:
             vals["ref"] = self.env["ir.sequence"].next_by_code("rx.prescription")
         return super(RxPrescription, self).create(vals_list)
+
 
 
 class RxPrescriptionLines(models.Model):
