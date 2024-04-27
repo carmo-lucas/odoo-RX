@@ -7,13 +7,16 @@
         <field name="arch" type="xml">
             <form string="Prescriptions">
                 <field name="status" widget="statusbar"
-                    statusbar_visible="solicitado,validado, recusado" />
+                    statusbar_visible="cotacao,solicitado,validado,recusado" />
                 <sheet>
                     <div class="oe-title">
                         <h1>
                             <field name="ref" readonly="1" />
                         </h1>
                     </div>
+                    <group>
+                        <field name="is_formula" string="Formula?" />
+                    </group>
                     <group col="3">
                         <group string="Informações Pessoais">
                             <field name="prescriber_id" />
@@ -24,17 +27,17 @@
                         <group string="Informações Medicamento">
                             <field name="pharmaceutical_form_id" />
                             <field name="tipoUso" />
-                            <field name="quantidadeFormula" invisible="pharmaceutical_form_id == 'inj'" />
-                            <field name="unidadeMedida_id" invisible="pharmaceutical_form_id == 'inj'" />
+                            <field name="quantidadeFormula" />
+                            <field name="unidadeMedida_id" />
                         </group>
                         <group string="Informações Adicionais">
                             <field name="posology" />
                             <field name="cid_code" />
-                            <field name="attachment" string="Anexo da Receita" />
+                            <field name="attachment" string="Prescription Attachment" />
                         </group>
                     </group>
                     <notebook>
-                        <page string="Itens do Pedido" name="prescription_lines">
+                        <page string="Prescription Components" name="prescription_lines">
                             <!-- Campo one2many para adicionar componentes da formula -->
                             <field
                                 name="prescription_line_ids">
@@ -90,9 +93,13 @@
             </p>
         </field>
     </record>
-
+    <!-- Menu principal do modulo -->
     <menuitem name="Prescriptions" id="rx_prescriptions_root" sequence="2" />
-    <menuitem name="Prescription" id="rx_menu_prescription" parent="rx_prescriptions_root"
+
+    <menuitem
+        name="Prescription"
+        id="rx_menu_prescription"
+        parent="rx_prescriptions_root"
         sequence="100"
         action="action_prescription" />
 </odoo>

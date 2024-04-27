@@ -10,6 +10,7 @@
     'data': [
         'views/prescriptions.xml',
         'views/product_views.xml',
+        'views/pharmaceutical_form.xml',
         'data/sequence.xml'
     ],
     'installable': True,

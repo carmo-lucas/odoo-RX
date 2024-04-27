@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="rx_pharmaceutical_form_tree" model="ir.ui.view">
+        <field name="name">rx.pharmaceutical.form.tree</field>
+        <field name="model">rx.pharmaceutical.form</field>
+        <field name="arch" type="xml">
+            <tree string="Pharmaceutical Form">
+                <field name="name"></field>
+                <field name="solid_state"></field>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_pharmaceutical_form" model="ir.actions.act_window">
+        <field name="name">Pharmaceutical Form</field>
+        <field name="res_model">rx.pharmaceutical.form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Add new pharmaceutical form
+            </p>
+        </field>
+    </record>
+
+    <menuitem 
+        name="Configuration"
+        id="rx_prescription_configuration"
+        parent = "rx_prescriptions_root"
+        sequence="999"
+    />
+
+    <menuitem
+        name="Pharmaceutical Form"
+        id="rx_pharmaceutical_form"
+        parent="rx_prescription_configuration"
+        action="action_pharmaceutical_form" />
+</odoo>
