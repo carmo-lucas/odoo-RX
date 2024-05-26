@@ -23,10 +23,10 @@
         </field>
     </record>
 
-    <menuitem 
+    <menuitem
         name="Configuration"
         id="rx_prescription_configuration"
-        parent = "rx_prescriptions_root"
+        parent="rx_prescriptions_root"
         sequence="999"
     />
 
@@ -34,5 +34,6 @@
         name="Pharmaceutical Form"
         id="rx_pharmaceutical_form"
         parent="rx_prescription_configuration"
-        action="action_pharmaceutical_form" />
+        action="action_pharmaceutical_form"
+    />
 </odoo>
