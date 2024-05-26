@@ -23,13 +23,14 @@
         </field>
     </record>
 
+    <!-- Level 1 Top bar menu parent is the root -->
     <menuitem
         name="Configuration"
         id="rx_prescription_configuration"
-        parent="rx_prescriptions_root"
+        parent="rx_prescriptions_root" 
         sequence="999"
     />
-
+<!-- Level 2 Top bar options  -->
     <menuitem
         name="Pharmaceutical Form"
         id="rx_pharmaceutical_form"

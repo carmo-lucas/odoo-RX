@@ -94,7 +94,9 @@
         </field>
     </record>
     <!-- Menu principal do modulo -->
-    <menuitem name="Prescriptions" id="rx_prescriptions_root" sequence="2" />
+
+<!-- Level 0 Root Menu Button -->
+    <menuitem name="Prescriptions" id="rx_prescriptions_root" sequence="2" web_icon="odoo-RX,static/description/icon.png"/>
 
     <menuitem
         name="Prescription"
